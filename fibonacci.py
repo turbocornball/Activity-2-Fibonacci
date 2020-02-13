@@ -1,3 +1,6 @@
+#python program for timing the execution of 
+#recursion and iteration use in Fibonacci sequence
+#
 from matplotlib import pyplot as plt
 import time
 
@@ -58,7 +61,10 @@ while n < 30:
 # Function to plot 
 plt.plot(x,recur_time) 
 plt.plot(x,iter_time)
-  
+
+plt.title('Fibonacci\n' + '(Execution Time)')
+plt.xlabel('Input Size')
+plt.ylabel('Execution Time')
 # function to show the plot 
 plt.show() 
 
