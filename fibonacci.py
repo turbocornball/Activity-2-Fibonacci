@@ -1,20 +1,32 @@
-#python program for timing the execution of 
-#recursion and iteration use in Fibonacci sequence
-#
-from matplotlib import pyplot as plt
-import time
+#recursion vs. iteration
+#https://github.com/turbocornball/Activity-2-Fibonacci.git 
+
+#timing two different ways of solving fibonacci sequence in python
+#results are shown in a graph
+#recursion vs iteration
 
 
-recur_time = []
+from matplotlib import pyplot as plt #importing matplotlib module for the graph
+import time                          #for timing each function
+
+
+#lists for storing the execution time on every input
+recur_time = []     
 iter_time = []
-x = []
+
+#list for storing the range of input sizes
+x = []       
 
 n = 5
+
+#loop for generating input sizes starting from size 5
 while n < 30:
-    n+=5
+    n+=5        
     x.append(n)
     past=time.time()
-    def Fibonacci(n): 
+
+    #recursion function
+    def recur_fibo(n): 
         if n<0: 
             print("Incorrect input") 
         # First Fibonacci number is 0 
@@ -24,14 +36,13 @@ while n < 30:
         elif n==2: 
             return 1
         else: 
-            return Fibonacci(n-1)+Fibonacci(n-2)
+            return recur_fibo(n-1)+recur_fibo(n-2)
     
-    (Fibonacci(n))
+    (recur_fibo(n))
     recur_time.append(time.time()-past)
-    #print("Recursion Execution Time: {} seconds".format(time.time()-past))
 
-
-    def fibonacci(n): 
+    #iteration function
+    def iter_fibo(n): 
         past = time.time()
         a = 0
         b = 1
@@ -48,15 +59,10 @@ while n < 30:
                 b = c 
             return b 
 
-    (fibonacci(n)) 
+    (iter_fibo(n)) 
     iter_time.append(time.time()-past)
-    #print("Iteration Execution Time: {} seconds" .format(time.time()-past))
-    
-# x-axis values 
-#x = [5, 2, 9, 4, 7] 
-  
-# Y-axis values 
-#y = [10, 5, 8, 4, 2] 
+
+
   
 # Function to plot 
 plt.plot(x,recur_time) 
@@ -67,4 +73,3 @@ plt.xlabel('Input Size')
 plt.ylabel('Execution Time')
 # function to show the plot 
 plt.show() 
-
