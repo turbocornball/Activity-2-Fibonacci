@@ -19,6 +19,7 @@ x = []
 
 n = 5
 
+#recursion function
 def recur_fibo(n):
     if n<0:
         print("Incorrect input")
@@ -31,6 +32,7 @@ def recur_fibo(n):
     else:
         return recur_fibo(n-1)+recur_fibo(n-2)
 
+#iteration function
 def iter_fibo(n):
     #past = time.time()
     a = 0
@@ -49,33 +51,32 @@ def iter_fibo(n):
         return b
 
 #loop for generating input sizes starting from size 5
+#limited the size to 30 because my pc would take long to run
+#the input size more than 30
 while n < 30:
     n+=5
     x.append(n)
+
+    #calling and timing the recursion function
     past=time.time()
-
-    #recursion function
-
-
     (recur_fibo(n))
     recur_time.append(time.time()-past)
 
-    #iteration function
+    #calling and timing the recursion function
     past=time.time()
     (iter_fibo(n))
     iter_time.append(time.time()-past)
 
 
 # Function to plot
-plt.bar(x, recur_time)
-plt.bar(x, iter_time)
+plt.bar(x, recur_time, label='Recursion Time')
+plt.bar(x, iter_time, label='Iteration Time')
 
 plt.title('Fibonacci\n' + '(Execution Time)')
 plt.xlabel('Input Size')
 plt.ylabel('Execution Time')
 # function to show the plot
 plt.show()
-
 
 
 print(recur_time)
