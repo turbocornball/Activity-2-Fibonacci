@@ -64,17 +64,18 @@ while n < 30:
 
     #calling and timing the recursion function
     past=time.time()
-    (iter_fibo(n))
+    print(iter_fibo(n))
     iter_time.append(time.time()-past)
 
 
 # Function to plot
-plt.bar(x, recur_time, label='Recursion Time')
-plt.bar(x, iter_time, label='Iteration Time')
+plt.bar(x, recur_time)
+plt.bar(x, iter_time)
 
 plt.title('Fibonacci\n' + '(Execution Time)')
 plt.xlabel('Input Size')
 plt.ylabel('Execution Time')
+plt.legend(["Recursion Time", "Iteration Time"])
 # function to show the plot
 plt.show()
 
