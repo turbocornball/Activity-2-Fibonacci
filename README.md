@@ -5,3 +5,5 @@ Find a better algorithm for solving the sequence.
 
 Typical results:
 
+![Graph for the Execution Time](images/fibograph.JPG)
+
