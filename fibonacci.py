@@ -1,9 +1,11 @@
 #recursion vs. iteration
+#execute better algorithm
 #https://github.com/turbocornball/Activity-2-Fibonacci.git
 
 #timing two different ways of solving fibonacci sequence in python
 #results are shown in a graph
 #recursion vs iteration
+#execution of a better algorithm
 
 
 from matplotlib import pyplot as plt #importing matplotlib module for the graph
@@ -13,6 +15,7 @@ import time                          #for timing each function
 #lists for storing the execution time on every input
 recur_time = []
 iter_time = []
+angel_algo = []
 
 #list for storing the range of input sizes
 x = []
@@ -34,9 +37,7 @@ def recur_fibo(n):
 
 #iteration function
 def iter_fibo(n):
-    #past = time.time()
-    a = 0
-    b = 1
+    a,b=0,1
     if n < 0:
         print("Incorrect input")
     elif n == 0:
@@ -49,6 +50,13 @@ def iter_fibo(n):
             a = b
             b = c
         return b
+
+#efficient fibo function
+def better_fibo(n):
+    a,b=0,1
+    while b <= iter_fibo(n):
+        a,b=b,a+b
+
 
 #loop for generating input sizes starting from size 5
 #limited the size to 30 because my pc would take long to run
@@ -67,18 +75,23 @@ while n < 30:
     print(iter_fibo(n))
     iter_time.append(time.time()-past)
 
+    #calling and timing the better algorithm
+    past=time.time()
+    (better_fibo(n))
+    angel_algo.append(time.time()-past)
 
 # Function to plot
-plt.bar(x, recur_time)
-plt.bar(x, iter_time)
-
+plt.plot(x, recur_time)
+plt.plot(x, iter_time)
+plt.plot(x, angel_algo)
 plt.title('Fibonacci\n' + '(Execution Time)')
 plt.xlabel('Input Size')
 plt.ylabel('Execution Time')
-plt.legend(["Recursion Time", "Iteration Time"])
+plt.legend(["Recursion Time", "Iteration Time", "Better Algo"])
 # function to show the plot
 plt.show()
 
 
 print(recur_time)
 print(iter_time)
+print(angel_algo)
