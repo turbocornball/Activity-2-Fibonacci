@@ -7,3 +7,6 @@ Typical results:
 
 ![Graph for the Execution Time](images/fibograph.JPG)
 
+Showing the list of the execution time:
+![List for Execution Time](images/fiboresults.JPG)
+
